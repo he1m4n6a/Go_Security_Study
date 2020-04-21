@@ -1,6 +1,9 @@
 # Go_Security_Study
 
 ## 编译选项
+- [x] [禁止使用低版本go sdk](./编译选项/#compile1)
+- [x] [使用PIE编译](./编译选项/#compile2)
+
 
 ## 编码安全
 
@@ -14,6 +17,10 @@
 
 
 ### Panic
+- [x] [数组越界](./编码安全/Panic/#panic1)
+- [x] [空指针](./编码安全/Panic/#panic2)
+- [x] [除0导致panic](./编码安全/Panic/#panic3)
+- [x] [GoSDK导致的panic](./编码安全/Panic/#panic4)
 
 ### 并发安全
 
