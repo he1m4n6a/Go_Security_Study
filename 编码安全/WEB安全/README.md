@@ -129,7 +129,7 @@ go自带的包database/sql提供了SQL操作的函数：
 
 ## 检测
 
-- 如果使用`database/sql`原生sdk包，直接在源代码中以`.Exec|.ExecContext|.Query|.QueryContext|.QueryRow|QueryRowContext`等函数名称做关键字进行搜索，然后对这些函数执行的SQL进行排查。  
+- 如果使用`database/sql`原生sdk包，直接在源代码中以`\.Exec\(|\.ExecContext\(|\.Query\(|\.QueryContext\(|\.QueryRow\(|\.QueryRowContext\(`等函数名称做关键字进行搜索，然后对这些函数执行的SQL进行排查。  
 - 如果使用第三方的数据库包，查看对应的sql操作文档，使用关键字在源码中搜索，查看是否做了sql语句进行拼接。例如，使用beego框架的orm，搜索`.Raw`等关键字。
 
 # XML注入
@@ -186,7 +186,7 @@ go语言xpath实现由三方库提供，具体如下：
 
 ## 检测：
 
-- 查找import是否导入上述三个包，如果是antchfx/xpath则使用`htmlquery.Find|htmlquery.FindOne|xpath.Compile|xmlquery.Find|xmlquery.FindOne|jsonquery.Find|jsonquery.FindOne`关键字进行代码搜索找到对应的查询语句。
+- 查找import是否导入上述三个包，如果是antchfx/xpath则使用`htmlquery\.Find|htmlquery\.FindOne|xpath\.Compile|xmlquery\.Find|xmlquery\.FindOne|jsonquery\.Find|jsonquery\.FindOne`关键字进行代码搜索找到对应的查询语句。
 - 分析对应的查询语句是否引入了外不可控变量并做了拼接操作，如做了拼接则存在Xpath注入。
 
 # 模板注入
@@ -284,7 +284,7 @@ beego框架的Controller.GetFiles方法
 
 ## 检测：
 
-- 搜索 `.FormFile|.MultipartForm.File|.GetFile|SaveToFile|GetFiles`方法，查看对应的取文件名操作，如果未对路径做安全过滤，则存在跨目录文件上传漏洞。
+- 搜索 `\.FormFile|\.MultipartForm\.File|\.GetFile|\.SaveToFile|\.GetFiles`方法，查看对应的取文件名操作，如果未对路径做安全过滤，则存在跨目录文件上传漏洞。
 
 # 文件下载漏洞
 
@@ -304,8 +304,8 @@ beego框架的Controller.GetFiles方法
 
 ## 检测
 
-- 通过关键字`ServeFile|.Download|os.Create|os.Open|os.OpenFile|iotuil.ReadFile|ioutil.WriteFile`搜索相关读取和保存文件的操作。
-- 通过使用其他的API，可通过查看路由对应的操作查看是否有相关保存文件的动作，有则进一步判断是否可以控制文件路径进行进行任意文件下载。亦可使用模糊关键字`.Down|.Save|.Write`搜索到对应的写文件操作。
+- 通过关键字`ServeFile|\.Download|os\.Create|os\.Open|os\.OpenFile|iotuil\.ReadFile|ioutil\.WriteFile`搜索相关读取和保存文件的操作。
+- 通过使用其他的API，可通过查看路由对应的操作查看是否有相关保存文件的动作，有则进一步判断是否可以控制文件路径进行进行任意文件下载。亦可使用模糊关键字`\.Down(|\.Save)|\.Write(`搜索到对应的写文件操作。
 
 # SSRF 
 
