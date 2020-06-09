@@ -15,7 +15,7 @@ go中涉及系统命令执行的API
 
 ## 检测
 
-- 搜索`syscall\.Exec(|syscall\.ForkExec(|syscall\.StartProcess(|exec\.Command(|exec\.CommandContext`关键字
+- 搜索`syscall\.Exec(|syscall\.ForkExec(|syscall\.StartProcess(|os\.StartProcess|exec\.Command(|exec\.CommandContext`关键字
 
 # 代码注入
 
